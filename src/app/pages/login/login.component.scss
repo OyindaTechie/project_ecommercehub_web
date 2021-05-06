@@ -1,0 +1,57 @@
+
+.maincontent {
+    padding-top: 100px;
+}
+
+#loginform {
+    width: 300px;
+}
+
+
+#signupform {
+    width: 300px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .iconlogo {
+      width: 30%;
+    }
+
+    .lowwith {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+  }
+  
+
+.bgimg {
+   
+    background-image: url('/assets/bg.svg');
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 100vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; 
+
+}
+
+.setme {
+    margin: 0;
+    position: absolute;
+    top: 97%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input {
+    // background-color: rgb(111, 155, 175) !important;
+    height: 50px;
+    border: none !important;
+    outline: none !important;
+}
+
+input:focus {
+    background-color: rgba(222, 236, 243, 0.384);
+}

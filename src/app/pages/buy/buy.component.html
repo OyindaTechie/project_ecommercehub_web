@@ -1,0 +1,91 @@
+
+<div>
+
+    <div class="header d-flex justify-content-between">
+
+
+            <img src="assets/ecoimg.svg" width="7%">
+
+       
+
+        <div>
+           
+            Welcome {{user}}
+            <button type="button" (click)="profile()" class="btn btn-primary btn-sm"><i class="bi bi-person-check"></i> Go to profile</button>
+        </div>
+
+    </div>
+
+
+
+    <div style="margin-top: 120px; text-align: center;" class="mb-5" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+        <h3 class="fw-bold"> Select An Item To Buy</h3>
+    </div>
+
+    <div data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+
+
+      <div class="row col-md-12 d-flex justify-content-center">
+
+        <div *ngFor="let item of alldevices" class="card ms-3  mb-5 col-md-4" style="width: 18rem;">
+            <img *ngIf="item?.name == 'Laptop'" class="card-img-top" src="assets/laptop.png" alt="Card image cap">
+            <img *ngIf="item?.name == 'Phone'" class="card-img-top" src="assets/phone.png" alt="Card image cap">
+            <img *ngIf="item?.name == 'Charger'" class="card-img-top" src="assets/charger.png" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-cart-check-fill"></i> {{item.name}}</h5>
+              <p class="card-text"><i class="bi bi-tags-fill"></i> 	&#8358;{{addcomma(item?.price)}}</p>
+              <a (click)="buyitem(item?.id)" class="btn btn-outline-primary"><i *ngIf="buyingbool == false" class="bi bi-credit-card-fill"></i> {{buying}}</a>
+            </div>
+          </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <div class="d-flex justify-content-center" style="margin-top: 30px;">
+        <button type="button" (click)="logout()" class="btn btn-warning"><i class="bi bi-box-arrow-left"></i> Logout</button>
+    
+    </div>
+
+
+
+
+      <!-- Modal -->
+  <div class="modal fade" id="buyitem" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-end" style="border: none;">
+          <!-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> -->
+          <button type="button" (click)="close()" class="close btn btn-light float-right" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="text-danger">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          
+            <div class="d-flex justify-content-center mb-4" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+                <img src="https://img.icons8.com/fluent/48/000000/checkmark.png"/>
+            </div>
+            <h5 class="text-center fw-bold" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-aos-easing="ease-in-sine">Awesome, {{buydata?.transaction?.deviceName}} purchased successfully!</h5>
+           
+        
+             <h6 class="text-center fw-bold" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000" data-aos-easing="ease-in-sine"> 	&#8358;{{addcomma(buydata?.transaction?.price)}}</h6>
+   
+            <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+                <h6 class="text-center w-75" >You can view this item in your profile, or click cancel above to buy more items</h6>
+  
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center mt-3 mb-3" data-aos="fade-up" data-aos-delay="1000" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+                <button type="button" (click)="profile()" class="btn btn-warning"><i class="bi bi-person-check"></i> Go To Profile</button>
+            
+            </div>
+        </div>
+    
+      </div>
+    </div>
+  </div>
+
+</div>

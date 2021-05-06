@@ -1,0 +1,144 @@
+
+<div>
+
+    <div class="header d-flex justify-content-between">
+
+    
+    <img src="assets/ecoimg.svg" width="7%">
+
+
+        <div>
+            Welcome Admin
+            <button type="button" (click)="back()" class="btn btn-primary btn-sm"><i class="bi bi-arrow-left"></i> Back To Login</button>
+        </div>
+
+    </div>
+
+
+
+
+    <div style="margin-top: 150px;" class="mb-5 container">
+      
+        <h5 class="mb-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-sine">ALL ITEMS BOUGHT / RETURNED IN REALTIME WITH DATE AND TIME</h5>
+      <div class="row col-md-12">
+
+
+        <div class="col-md-8 boxone"  data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+
+
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">({{boughtItems?.length}})  {{boughtItems?.length > 1 ? 'Items Bought' : 'Item Bought'}} </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"> ({{returnedItems?.length}})  {{returnedItems?.length > 1 ? 'Items Returned' : 'Item Returned'}}  </button>
+                </li>
+
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+            <div *ngIf="boughtItems?.length != 0" class="table-responsive">
+
+                <table class="table table-borderless">
+                    <thead>
+                      <tr >
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Purchase Date</th>
+                        <th scope="col">status</th>
+                     
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of boughtItems; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item?.user_id}}</td>
+                        <td>{{item?.deviceName}}</td>
+                        <td>&#8358;{{addcomma(item?.price)}}</td>
+                        <td>{{item?.soldDate}}</td>
+                        <td class="text-success fw-bold"><small>{{item?.status  ? 'Bought' : item?.status}}</small></td>
+                    
+                      </tr>
+                
+                    </tbody>
+                  </table>
+
+            </div>
+
+
+
+            <div *ngIf="boughtItems?.length == 0">
+                no item bought yet, kindly buy an item
+            </div>
+
+
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                    <div *ngIf="returnedItems?.length != 0" class="table-responsive">
+
+                        <table class="table table-borderless">
+                            <thead>
+                              <tr >
+                                <th scope="col">#</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Return Date</th>
+                                <th scope="col">status</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let item of returnedItems; let i = index">
+                                <th scope="row">{{i+1}}</th>
+                                <td>{{item?.user_id}}</td>
+                                <td>{{item?.deviceName}}</td>
+                                <td>&#8358;{{addcomma(item?.price)}}</td>
+                                <td>{{item?.returnDate}}</td>
+                                <td class="text-danger fw-bold"><small>{{item?.status}}</small></td>
+                              </tr>
+                        
+                            </tbody>
+                          </table>
+        
+                    </div>
+        
+        
+        
+                    <div *ngIf="returnedItems?.length == 0">
+                        no item returned yet, kindly buy an item
+                    </div>
+        
+        
+
+                </div>
+
+              </div>
+
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-sine">
+
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+
+
+      </div>
+
+        
+    </div>
+
+
+
+
+
+
+
+  
+
+
+</div>
